@@ -151,15 +151,18 @@ const CurrentPostComp = ({item, setKey, logInName}) => {
 
                 <div className='d-flex justify-content-between align-items-center'>
                     <small>{new Date(item.timestamp).toLocaleString('lt-LT', {timeZone: 'Europe/Vilnius'})}</small>
-                    {setKey && logInName === item.username && !trigger && <div className='d-flex align-items-center'>
-                        <div style={{color: "#1f59c8"}}>Double click on text to update</div>
+                    {setKey && logInName === item.username && !trigger &&
+                        <div style={{color: "#1f59c8"}}>Double click on text to update</div>}
+
+                    {setKey && logInName === item.username && !trigger && <div>
                         <button className='ms-2' onClick={() => deletePost()}>DELETE</button>
                     </div>}
+
                     {setKey && logInName === item.username && trigger &&
                         <div>
-                        <button className='ms-1' onClick={() => updatePost()}>UPDATE</button>
-                        <button className='ms-1' onClick={() => cancelUpdate()}>CANCEL UPDATE</button>
-                    </div>}
+                            <button className='ms-1' onClick={() => updatePost()}>UPDATE</button>
+                            <button className='ms-1' onClick={() => cancelUpdate()}>CANCEL UPDATE</button>
+                        </div>}
 
                 </div>
 
