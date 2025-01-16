@@ -1,0 +1,97 @@
+
+
+
+.gap10 {
+    gap: 10px;
+}
+.gap2 {
+    gap: 2px;
+}
+.border {
+    border: 1px solid black;
+}
+
+.pad5 {
+    padding: 5px;
+}
+.marg-bot {
+    margin-bottom: 5px;
+}
+
+
+.cursor-point {
+    cursor: pointer;
+}
+
+.txt-center {
+    text-align: center;
+}
+
+.fs-10 {
+    font-size: 10px;
+}
+.fs-14 {
+    font-size: 14px;
+}
+.fs-35 {
+    font-size: 35px;
+}
+.fs-50 {
+    font-size: 50px;
+}
+.fs-100 {
+    font-size: 100px;
+}
+
+.grow1 {
+    flex: 1;
+}
+.grow2 {
+    flex: 2;
+}
+.grow3 {
+    flex: 3;
+}
+.offClick {
+    pointer-events: none;
+}
+
+/*-----------------------------*/
+
+.App {
+    min-width: 200px;
+    min-height: 150px;
+
+}
+.titleLink, .userLink{
+    text-decoration: none;
+}
+.titleLink {
+    color: black;
+}
+.titleLink:hover {
+    font-size: 17px;
+    cursor: pointer;
+}
+.singlePost {
+    min-width: 150px;
+    overflow: hidden;
+}
+
+.currentPost {
+    min-width: 300px;
+}
+
+.imgDiv img{
+    max-width: 400px;
+    min-width: 200px;
+}
+.login {
+    max-width: 250px;
+}
+.register {
+    max-width: 250px;
+}
+.textArea {
+    width: 100%;
+}
