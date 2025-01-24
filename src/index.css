@@ -55,43 +55,36 @@
 .offClick {
     pointer-events: none;
 }
-
-/*-----------------------------*/
-
-.App {
-    min-width: 200px;
-    min-height: 150px;
-
-}
-.titleLink, .userLink{
-    text-decoration: none;
-}
-.titleLink {
-    color: black;
-}
-.titleLink:hover {
-    font-size: 17px;
-    cursor: pointer;
-}
-.singlePost {
-    min-width: 150px;
+.overHidden {
     overflow: hidden;
 }
 
-.currentPost {
-    min-width: 300px;
+/*-----------------------------*/
+
+/*tollbar*/
+.link {
+    text-decoration: none;
 }
 
-.imgDiv img{
-    max-width: 400px;
-    min-width: 200px;
+
+/*-------------------------------*/
+
+.imgOne img {
+    width: 200px;
 }
-.login {
-    max-width: 250px;
+.image {
+    width: 100px;
 }
-.register {
-    max-width: 250px;
+.postCard {
+    width: 160px;
+    overflow: hidden;
 }
-.textArea {
-    width: 100%;
+.postCard img{
+    width: 150px;
+    border-radius: 5px;
+}
+
+.singleCard img{
+    width: 150px;
+    border-radius: 5px;
 }

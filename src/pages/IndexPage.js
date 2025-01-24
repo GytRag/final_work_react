@@ -1,29 +1,20 @@
-import React, {useEffect, useState} from 'react';
-import SinglePost from "../components/SinglePost";
-
-const IndexPage = ({}) => {
-
-    const [data, setData] = useState(null);
+import React, {useState, useRef, useEffect} from 'react';
+import useStore from "../store/main";
+import {useNavigate} from "react-router-dom";
+import UserComp from "../components/UserComp";
 
 
-    useEffect(() => {
-        fetch('http://167.99.138.67:1111/getallposts')
-            .then(res => res.json())
-            .then(data => {
-                const posts = []
 
-                for (let i = data.data.length-1; i > 420 ; i--) {
-                    posts.push(data.data[i])
-                }
-                setData(posts);
-            })
-    },[])
+const IndexPage = () => {
 
+
+    const {users} = useStore((state) => state);
 
 
     return (
-        <div className='m-2 d-flex flex-wrap gap-1'>
-            {data !== null && data !== undefined && data.map((x) => <SinglePost item={x} key={x.id} />)}
+        <div className='d-flex gap-1 flex-wrap m-2'>
+
+            {users.map((x, i) => <UserComp item={x} key={i} />)}
 
         </div>
     );
