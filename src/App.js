@@ -4,34 +4,36 @@ import {Route, Routes} from "react-router-dom";
 
 import IndexPage from "./pages/IndexPage";
 import Tollbar from "./components/Tollbar";
-import RegisterPage from "./pages/RegisterPage";
-import LoginPage from "./pages/LoginPage";
-import ProfilePage from "./pages/ProfilePage";
-import CreatPostPage from "./pages/CreatPostPage";
-import AllPostsPage from "./pages/AllPostsPage";
-import SinglePostPage from "./pages/SinglePostPage";
-import ConversationPage from "./pages/conversationPage";
-
-
+import UserPage from "./pages/UserPage";
+import CurrentPost from "./pages/CurrentPost";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import UploadPage from "./pages/UploadPage";
 
 
 function App() {
-    
+
+    const [secretKey, setSecretKey] = useState(null);
+    const [username, setUsername] = useState(null);
+
+    function set(secKey, usName){
+        setSecretKey(secKey)
+        setUsername(usName)
+    }
+
 
     return (
         <div className='App'>
-            <Tollbar />
+            <Tollbar setKey={secretKey} username={username}/>
             <div>
 
                 <Routes>
-                    <Route path="/" element={<IndexPage  />} exact />
-                    <Route path="/register" element={<RegisterPage  />} />
-                    <Route path="/login" element={<LoginPage  />} />
-                    <Route path="/profile" element={<ProfilePage  />} />
-                    <Route path="/createpost" element={<CreatPostPage  />} />
-                    <Route path="/allposts" element={<AllPostsPage  />} />
-                    <Route path="/singlepost/:id" element={<SinglePostPage  />} />
-                    <Route path="/conversations" element={<ConversationPage  />} />
+                    <Route path="/" element={<IndexPage />} exact />
+                    <Route path="/user/:username" element={<UserPage />}/>
+                    <Route path="/singlePost/:username/:id" element={<CurrentPost setKey={secretKey} logInName={username}/>}/>
+                    <Route path="/login" element={<Login set={set}/>}/>
+                    <Route path="/register" element={<Register />}/>
+                    <Route path="/upload" element={<UploadPage setKey={secretKey}/>}/>
                 </Routes>
 
             </div>
