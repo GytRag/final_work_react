@@ -1,39 +1,30 @@
-import React, {useState, useEffect, use} from 'react'
+import React from 'react'
 import {Route, Routes} from "react-router-dom";
 
 
 import IndexPage from "./pages/IndexPage";
 import Tollbar from "./components/Tollbar";
-import UserPage from "./pages/UserPage";
-import CurrentPost from "./pages/CurrentPost";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import UploadPage from "./pages/UploadPage";
+import RegisterPage from "./pages/RegisterPage";
+import LoginPage from "./pages/LoginPage";
+import UserProfilePage from "./pages/UserProfilePage";
+
 
 
 function App() {
 
-    const [secretKey, setSecretKey] = useState(null);
-    const [username, setUsername] = useState(null);
-
-    function set(secKey, usName){
-        setSecretKey(secKey)
-        setUsername(usName)
-    }
 
 
     return (
         <div className='App'>
-            <Tollbar setKey={secretKey} username={username}/>
+            <Tollbar />
             <div>
 
                 <Routes>
                     <Route path="/" element={<IndexPage />} exact />
-                    <Route path="/user/:username" element={<UserPage />}/>
-                    <Route path="/singlePost/:username/:id" element={<CurrentPost setKey={secretKey} logInName={username}/>}/>
-                    <Route path="/login" element={<Login set={set}/>}/>
-                    <Route path="/register" element={<Register />}/>
-                    <Route path="/upload" element={<UploadPage setKey={secretKey}/>}/>
+                    <Route path="/register" element={<RegisterPage />} exact />
+                    <Route path="/login" element={<LoginPage />} exact />
+                    <Route path="/user" element={<UserProfilePage />} exact />
+
                 </Routes>
 
             </div>

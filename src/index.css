@@ -58,40 +58,12 @@
 
 /*-----------------------------*/
 
-.App {
-    min-width: 200px;
-    min-height: 150px;
-
+img {
+    width: 200px;
 }
-.titleLink, .userLink{
-    text-decoration: none;
+.userCard {
+    width: 200px;
 }
-.titleLink {
-    color: black;
-}
-.titleLink:hover {
-    font-size: 17px;
-    cursor: pointer;
-}
-.singlePost {
-    min-width: 150px;
-    overflow: hidden;
-}
-
-.currentPost {
-    min-width: 300px;
-}
-
-.imgDiv img{
-    max-width: 400px;
-    min-width: 200px;
-}
-.login {
-    max-width: 250px;
-}
-.register {
-    max-width: 250px;
-}
-.textArea {
-    width: 100%;
+.poke:hover {
+    scale: 1.1;
 }
