@@ -1,68 +1,52 @@
-import React, {useRef} from 'react';
+import {useState, useRef} from 'react';
+import http from '../plugins/https'
 import useStore from "../store/main";
-import {useNavigate} from "react-router-dom";
-const LoginPage = () => {
-
-    const navigate = useNavigate();
-    const {error, updateError, updateUsers, updateUserConnected} = useStore((state) => state)
-
-    const refs = {
-        username: useRef(),
-        password: useRef()
-    }
 
 
-    function login() {
+const LoginPage = ({socket}) => {
 
-        const item = {
-            username: refs.username.current.value,
-            password: refs.password.current.value
+    const [error, setError] = useState(null);
+    const {setUser} = useStore((state) => state);
+
+
+    const loginUserRef = useRef(null);
+    const loginPassRef = useRef(null);
+
+
+    const login = async (e) => {
+        e.preventDefault();
+        setError(null);
+
+        const username = loginUserRef.current.value
+        const password = loginPassRef.current.value
+
+
+        if (!username || !password) {
+            setError('All fields are required')
+            return
         }
 
+        const res = await http.post('http://localhost:8001/login', {username, password})
 
-        const options = {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(item)
+        if(res.success) {
+            socket.emit('login', res.myUser);
+            localStorage.setItem('token', res.token);
+            setUser(res.myUser)
         }
-
-
-        updateError(null)
-
-        fetch("http://localhost:8001/login", options)
-            .then(res => res.json())
-            .then(data => {
-                if (data.error) updateError(data.message)
-                if (!data.error) {
-                    updateError('')
-
-                        fetch('http://localhost:8001')
-                            .then(res => res.json())
-                            .then(data => {
-                                updateUsers(data.users);
-                                updateUserConnected(data.pokes)
-                                console.log(data)
-                            })
-
-                    navigate('/')
-                }
-            })
-
-
     }
+
 
     return (
-        <div className="text-center">
-            <div>
-                {error && error}
-            </div>
-            <div className='m-2 d-flex gap-1 flex-column align-items-center m-2'>
-                <input type="text" placeholder='username' ref={refs.username}/>
-                <input type="password" placeholder='password' ref={refs.password}/>
+        <div className='d-flex justify-content-center m-2 gap-2'>
+
+            <div className='border p-2 d-flex flex-column gap-1'>
+                <div>Login</div>
+                <input type="text" placeholder='username' ref={loginUserRef} />
+                <input type="password" placeholder='password' ref={loginPassRef}/>
+                {error && <div>{error}</div>}
                 <button onClick={login}>login</button>
             </div>
+
 
         </div>
     );

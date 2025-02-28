@@ -1,14 +1,17 @@
 import {create} from "zustand";
 
 const useStore = create((set) => ({
-    error: null,
-    users: null,
-    userConnected: null,
+    user: null,
+    allUsers: null,
+    pokes: null,
+    chatWindow: null,
+
+    setUser: (newUser) => set({user: newUser}),
+    setAllUsers: (users) => set({allUsers: users}),
+    setPokes: (poke) => set({pokes: poke}),
+    setChatWindow: (win) => set({chatWindow: win}),
 
 
-    updateError: (newError) => set({error: newError}),
-    updateUsers: (newUsers) => set({users: newUsers}),
-    updateUserConnected: (user) => set({userConnected: user})
 }))
 
 export default useStore;

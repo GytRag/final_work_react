@@ -1,13 +1,9 @@
-import React from 'react'
 import {Route, Routes} from "react-router-dom";
-
-
-import IndexPage from "./pages/IndexPage";
+import AllUsersPage from "./pages/AllUsersPage";
 import Tollbar from "./components/Tollbar";
-import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
-import UserProfilePage from "./pages/UserProfilePage";
-
+import {socket} from "./socket";
+import RegisterPage from "./pages/RegisterPage";
 
 
 function App() {
@@ -20,10 +16,9 @@ function App() {
             <div>
 
                 <Routes>
-                    <Route path="/" element={<IndexPage />} exact />
-                    <Route path="/register" element={<RegisterPage />} exact />
-                    <Route path="/login" element={<LoginPage />} exact />
-                    <Route path="/user" element={<UserProfilePage />} exact />
+                    <Route path="/" element={<AllUsersPage socket={socket}/>}  />
+                    <Route path="/login" element={<LoginPage socket={socket}/>}  />
+                    <Route path="/register" element={<RegisterPage />}  />
 
                 </Routes>
 
