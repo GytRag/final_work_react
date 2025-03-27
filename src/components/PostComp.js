@@ -5,7 +5,7 @@ import {useNavigate} from "react-router-dom";
 
 const PostComp = ({post}) => {
 
-    const {setFavorites, favorites} = useStore((state) => state);
+    const {setFavorites, favorites, setSelectPage} = useStore((state) => state);
     const nav = useNavigate();
     const [inFav, setInFav] = useState(null);
     if (inFav === null) {
@@ -34,12 +34,18 @@ const PostComp = ({post}) => {
             })
     }
 
+    function gotTo(item) {
+        setSelectPage(null)
+        nav(item)
+    }
+
+
     return (
         <div className='post border rounded-2 p-3 d-flex flex-column justify-content-between'>
             <img className='image' src={post.image} alt=""/>
             <div>
-                <h2 onClick={() => nav(`/post/${post._id}`)} className='fs-1 me-1 cursor-point'>{post.title}</h2>
-                <p onClick={() => nav(`/user/${post.name}`)} className='cursor-point my-1'>Created
+                <h2 onClick={() => gotTo(`/post/${post._id}`)} className='fs-1 me-1 cursor-point'>{post.title}</h2>
+                <p onClick={() => gotTo(`/user/${post.name}`)} className='cursor-point my-1'>Created
                     by: <b>{post.name}</b></p>
                 {!inFav && <button onClick={addToFavorite} className="mt-2">Add to favorite</button>}
                 {inFav && <button onClick={RemoveToFavorite} className="mt-2">Remove from favorites</button>}

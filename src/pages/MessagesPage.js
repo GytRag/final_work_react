@@ -5,7 +5,7 @@ import UserCardComp from "../components/UserCardComp";
 import {socket} from "../socket";
 
 const MessagesPage = () => {
-    const {userConnected, messages, setMessages, selected, setSelected} = useStore((state) => state);
+    const {userConnected, selected} = useStore((state) => state);
 
     const [chat, setChat] = useState(null);
     const inpRef = useRef(null);
@@ -28,23 +28,27 @@ const MessagesPage = () => {
             if (selected) {
                 if (selected.userOne_id === data.userOne_id && selected.userTwo_id === data.userTwo_id) {
                     setConvers(data)
+                }else {
+                    // console.log(data)
                 }
             }
         };
 
         const handleGetChat = (data) => {
-            // setSelected(data)
-            //     need to update chat
+            setChat(data)
         };
 
         socket.on("sendMessage", handleSendMessage);
         socket.on("gotMessage", handleGotMessage);
         socket.on("getChat", handleGetChat);
+        socket.on("getDeletedChat", handleGetChat);
+
 
         return () => {
             socket.off("gotMessage", handleGotMessage);
             socket.off("sendMessage", handleSendMessage);
             socket.off("getChat", handleGetChat);
+            socket.off("getDeletedChat", handleGetChat);
         };
 
     }, [change]);

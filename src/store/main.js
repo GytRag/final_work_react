@@ -13,12 +13,15 @@ const useStore = create((set) => ({
     setUserPosts: (x) => set({userPosts: x}),
 
     selected:null,
-    messages:null,
+    newMessages:[],
     setSelected: (x) => set({selected: x}),
-    setMessages: (x) => set({messages: x}),
+    setNewMessages: (x) => set({newMessages: x}),
 
     post:null,
     setPost: (x) => set({post: x}),
+
+    select:"Home",
+    setSelectPage: (x) => set({select: x}),
 }))
 
 export default useStore;

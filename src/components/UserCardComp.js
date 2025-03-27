@@ -5,7 +5,7 @@ import {socket} from "../socket";
 
 const UserCardComp = ({item, change, setChange, setConvers}) => {
 
-    const {userConnected, messages, setMessages, selected, setSelected } = useStore((state) => state);
+    const {userConnected, selected, setSelected, newMessages, setNewMessages } = useStore((state) => state);
     const [chatWith, setChatWith] = useState(null);
 
     if (!chatWith) {
@@ -28,19 +28,19 @@ const UserCardComp = ({item, change, setChange, setConvers}) => {
         if(selected){
             if(selected._id === item._id) {
                 setSelected(null)
-                setMessages(null)
                 setConvers(null)
                 setChange(!change)
             }
             if(selected._id !== item._id) {
                 setSelected(item)
-                setMessages(item.messages)
                 setConvers(item)
+                setNewMessages(newMessages.filter(fil => fil !== item._id))
                 setChange(!change)
             }
         } else {
             setSelected(item)
             setConvers(item)
+            setNewMessages(newMessages.filter(fil => fil !== item._id))
             setChange(!change)
         }
 
@@ -48,7 +48,7 @@ const UserCardComp = ({item, change, setChange, setConvers}) => {
 
     function deleteChat() {
         const chat = {
-            chat_id: item._id,
+            chat: item,
         }
 
         if(selected && selected._id === item._id) if(selected === item) setSelected(null)
