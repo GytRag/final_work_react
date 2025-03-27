@@ -1,17 +1,24 @@
 import {create} from "zustand";
 
 const useStore = create((set) => ({
-    user: null,
-    allUsers: null,
-    pokes: null,
-    chatWindow: null,
+    userConnected: null,
+    favorites: null,
+    setUserConnected: (user) => set({userConnected: user}),
+    setFavorites: (mess) => set({favorites: mess}),
 
-    setUser: (newUser) => set({user: newUser}),
-    setAllUsers: (users) => set({allUsers: users}),
-    setPokes: (poke) => set({pokes: poke}),
-    setChatWindow: (win) => set({chatWindow: win}),
+    // single user page
+    userData: null,
+    userPosts: null,
+    setUserData: (x) => set({userData: x}),
+    setUserPosts: (x) => set({userPosts: x}),
 
+    selected:null,
+    messages:null,
+    setSelected: (x) => set({selected: x}),
+    setMessages: (x) => set({messages: x}),
 
+    post:null,
+    setPost: (x) => set({post: x}),
 }))
 
 export default useStore;

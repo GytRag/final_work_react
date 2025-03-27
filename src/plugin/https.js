@@ -36,7 +36,6 @@ module.exports =  {
                 method: "GET",
                 headers: {
                     authorization: localStorage.getItem('token'),
-                    "content-type": "application/json"
                 }
             }
 

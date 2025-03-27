@@ -1,0 +1,61 @@
+import React, {useEffect, useRef, useState} from 'react';
+import {useParams} from "react-router-dom";
+import http from "../plugin/https";
+import PostComp from "../components/PostComp";
+import useStore from "../store/main";
+
+const SingleUserPage = () => {
+
+    const {userConnected, setUserData, setUserPosts, userPosts, userData} = useStore((state) => state);
+
+    const {username} = useParams();
+    const inpRef = useRef(null);
+
+    useEffect(() => {
+        http.getToken("http://localhost:8001/user/" + username)
+            .then(data => {
+                setUserPosts(data.userPosts)
+                setUserData(data.userData)
+            })
+    }, []);
+
+    function sendMessage() {
+
+        const item = {
+            message: inpRef.current.value,
+            messTo: userData
+        }
+
+        http.postToken("http://localhost:8001/sendmessage/", item)
+            .then(data => {
+                if(data.success) inpRef.current.value = null;
+            })
+    }
+
+    return (
+        <div className='m-2 border border-black rounded-2 p-2'>
+            {userData && <div>
+                <div className='d-flex mb-5'>
+                    <div><img className='userImg' src={userData.image} alt=""/></div>
+                    <div className='ms-2 d-flex flex-column justify-content-between my-4'>
+                        <div className='mb-3'>{userData.username}</div>
+                        {userConnected.username !== userData.username && <div className='d-flex gap-1'>
+                            <textarea placeholder='message' ref={inpRef} cols="30" rows="3"></textarea>
+                            <button onClick={sendMessage}>send</button>
+                        </div>}
+                    </div>
+                </div>
+
+
+                <div>
+                    <div>Posts by: <b>{userData.username}</b></div>
+                    <div className='d-flex gap-1 flex-wrap mt-2'>
+                        {userPosts.map((x,i) => <PostComp post={x} key={i}/>)}
+                    </div>
+                </div>
+            </div>}
+        </div>
+    );
+};
+
+export default SingleUserPage;
