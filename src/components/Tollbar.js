@@ -66,12 +66,12 @@ const Tollbar = () => {
             setChange(!change)
         };
 
-        socket.on("gotMessage", handleGotMessage);
-        socket.on("getChat", handleGetChat);
+        socket.on("newMessage", handleGotMessage);
+        socket.on("newChat", handleGetChat);
 
         return () => {
-            socket.off("gotMessage", handleGotMessage);
-            socket.off("getChat", handleGetChat);
+            socket.off("newMessage", handleGotMessage);
+            socket.off("newChat", handleGetChat);
 
         };
     }, [change, selected])
@@ -94,9 +94,16 @@ const Tollbar = () => {
                                         onClick={() => navPage('Create Post')}
                                         className='link' to='/create-post'>Create Post</Link>}
 
-                {userConnected && <Link style={{textDecoration: select === 'Messages' ? "underline" : "none"}}
-                                        onClick={() => navPage('Messages')}
-                                        className='link' to='/messages'>Messages</Link>}
+                {userConnected && <Link onClick={() => navPage('Messages')}
+                                        className='link' to='/messages'>
+                                    <div className='position-relative'>
+                                        <div style={{textDecoration: select === 'Messages' ? "underline" : "none"}}
+                                        >Messages
+                                        </div>
+                                        {newMessages.length > 0 && <div className='newMess'>📨</div>}
+                                    </div>
+
+                                </Link>}
 
                 {userConnected && <Link style={{textDecoration: select === 'Favorites' ? "underline" : "none"}}
                                         onClick={() => navPage('Favorites')}

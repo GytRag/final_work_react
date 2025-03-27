@@ -13,9 +13,13 @@ const MessagesPage = () => {
     const [convers, setConvers] = useState(null)
 
     useEffect(() => {
-        http.getToken("http://localhost:8001/getmessage")
+        http.getToken(`http://localhost:8001/getmessage`)
             .then(data => {
                 setChat(data.existChat)
+                if(selected) {
+                    const set = data.existChat.find(fin => fin._id === selected._id)
+                    setConvers(set)
+                }
             })
     }, [change]);
 
@@ -51,7 +55,7 @@ const MessagesPage = () => {
             socket.off("getDeletedChat", handleGetChat);
         };
 
-    }, [change]);
+    }, [change, selected]);
 
 
     function sendMessage() {
@@ -107,7 +111,7 @@ const MessagesPage = () => {
             {chat && chat.length > 0 && <div className='border border-black m-2 p-2 rounded-2 d-flex gap-2'>
                 <div className='grow2'>
                     {chat && chat.map(x => <UserCardComp key={x._id} item={x} change={change} setChange={setChange}
-                                                         setConvers={setConvers} />)}
+                                                         setConvers={setConvers} setChat={setChat} />)}
                 </div>
 
                 <div className='grow3'>

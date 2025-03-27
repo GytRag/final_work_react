@@ -25,23 +25,21 @@ const UserCardComp = ({item, change, setChange, setConvers}) => {
     }
 
     function select() {
+        setChange(!change)
         if(selected){
             if(selected._id === item._id) {
                 setSelected(null)
                 setConvers(null)
-                setChange(!change)
             }
             if(selected._id !== item._id) {
                 setSelected(item)
                 setConvers(item)
                 setNewMessages(newMessages.filter(fil => fil !== item._id))
-                setChange(!change)
             }
         } else {
             setSelected(item)
             setConvers(item)
             setNewMessages(newMessages.filter(fil => fil !== item._id))
-            setChange(!change)
         }
 
     }
@@ -60,7 +58,7 @@ const UserCardComp = ({item, change, setChange, setConvers}) => {
     return (
         <div className='mb-2'>
             {chatWith &&
-                <div style={{backgroundColor: selected? selected._id === item._id? "lightblue":"" : ""}}
+                <div style={{backgroundColor: selected? selected._id === item._id? "lightblue":newMessages.find(fin => fin === item._id)? "#fbc058":''    : ""}}
                     className='d-flex align-items-center gap-2 border rounded-2 p-2'>
                     <div onClick={select}
                         className='d-flex align-items-center gap-2 cursor-point w-100'>
