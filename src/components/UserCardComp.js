@@ -3,9 +3,9 @@ import useStore from "../store/main";
 import http from "../plugin/https";
 import {socket} from "../socket";
 
-const UserCardComp = ({item}) => {
+const UserCardComp = ({item, change, setChange, setConvers}) => {
 
-    const {userConnected, selected, setSelected, messages, setMessages } = useStore((state) => state);
+    const {userConnected, messages, setMessages, selected, setSelected } = useStore((state) => state);
     const [chatWith, setChatWith] = useState(null);
 
     if (!chatWith) {
@@ -25,14 +25,25 @@ const UserCardComp = ({item}) => {
     }
 
     function select() {
-        if(selected === item) {
-            setSelected(null)
-            setMessages(null)
-        }
-        if(selected !== item) {
+        if(selected){
+            if(selected._id === item._id) {
+                setSelected(null)
+                setMessages(null)
+                setConvers(null)
+                setChange(!change)
+            }
+            if(selected._id !== item._id) {
+                setSelected(item)
+                setMessages(item.messages)
+                setConvers(item)
+                setChange(!change)
+            }
+        } else {
             setSelected(item)
-            setMessages(item.messages)
+            setConvers(item)
+            setChange(!change)
         }
+
     }
 
     function deleteChat() {

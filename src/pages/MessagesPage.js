@@ -5,12 +5,12 @@ import UserCardComp from "../components/UserCardComp";
 import {socket} from "../socket";
 
 const MessagesPage = () => {
-    const {userConnected, selected, setSelected, messages, setMessages  } = useStore((state) => state);
+    const {userConnected, messages, setMessages, selected, setSelected} = useStore((state) => state);
 
     const [chat, setChat] = useState(null);
     const inpRef = useRef(null);
     const [change, setChange] = useState(false);
-
+    const [convers, setConvers] = useState(null)
 
     useEffect(() => {
         http.getToken("http://localhost:8001/getmessage")
@@ -20,26 +20,21 @@ const MessagesPage = () => {
     }, [change]);
 
     useEffect(() => {
-        // let select = null
-        // socket.on("getSelected", data => {
-        //     select = data
-        // })
         const handleSendMessage = (data) => {
-            if (data) {
-                setSelected(data)
-            }
+            setConvers(data)
         };
 
         const handleGotMessage = (data) => {
-            if (data) {
-                if (selected) {
-                    if(selected.userOne_id === data.userOne_id && selected.userTwo_id === data.userTwo_id) setSelected(data)
+            if (selected) {
+                if (selected.userOne_id === data.userOne_id && selected.userTwo_id === data.userTwo_id) {
+                    setConvers(data)
                 }
             }
         };
 
         const handleGetChat = (data) => {
-            console.log(data)
+            // setSelected(data)
+            //     need to update chat
         };
 
         socket.on("sendMessage", handleSendMessage);
@@ -52,7 +47,7 @@ const MessagesPage = () => {
             socket.off("getChat", handleGetChat);
         };
 
-    },[]);
+    }, [change]);
 
 
     function sendMessage() {
@@ -76,22 +71,21 @@ const MessagesPage = () => {
             .then(data => {
                 if (data.success) {
                     inpRef.current.value = null;
-                    setSelected(data.conversation)
                     setChange(!change)
                 }
             })
     }
 
     function deleteMessage(mess) {
+        const chatToSend = convers.messages.filter(filt => filt.timestamp !== mess.timestamp)
 
         const item = {
             chat_id: selected._id,
-            mess
+            chatToSend
         }
         http.postToken("http://localhost:8001/deletemessage/", item)
             .then(data => {
-                if(data.success) {
-                    setSelected(data.updateChat)
+                if (data.success) {
                     setChange(!change)
                 }
             })
@@ -108,14 +102,15 @@ const MessagesPage = () => {
 
             {chat && chat.length > 0 && <div className='border border-black m-2 p-2 rounded-2 d-flex gap-2'>
                 <div className='grow2'>
-                    {chat && chat.map(x => <UserCardComp key={x._id} item={x}/>)}
+                    {chat && chat.map(x => <UserCardComp key={x._id} item={x} change={change} setChange={setChange}
+                                                         setConvers={setConvers} />)}
                 </div>
 
                 <div className='grow3'>
-                    {selected &&
+                    {convers &&
                         <div className='border p-2 rounded-2 d-flex flex-column justify-content-between h-100'>
                             <div className='overflow-auto mb-2'>
-                                {selected.messages.map((x, i) =>
+                                {convers.messages.map((x, i) =>
                                     <div key={i}>
                                         {x.sender === userConnected._id ?
                                             <div>
