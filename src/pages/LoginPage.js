@@ -2,6 +2,7 @@ import React, {useRef, useState} from 'react';
 import useStore from "../store/main";
 import {useNavigate} from "react-router-dom";
 import {socket} from "../socket";
+import http from "../plugin/https";
 
 const LoginPage = () => {
 
@@ -14,22 +15,11 @@ const LoginPage = () => {
     const [error, setError] = useState(null);
 
     function login() {
-
         const item = {
             username: usernameRef.current.value,
             password: passOneRef.current.value
         }
-
-        const options = {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(item)
-        }
-
-        fetch('http://localhost:8001/login', options)
-            .then(res => res.json())
+        http.post(`http://localhost:8001/login`, item)
             .then(data => {
                 if(!data.success) setError(data.message)
                 if(data.success) {
@@ -39,10 +29,8 @@ const LoginPage = () => {
                     socket.emit('login', data.myUser);
                     nav('/')
                 }
-
             })
     }
-
 
     return (
         <div className='d-flex flex-column gap-1 align-items-center m-2'>

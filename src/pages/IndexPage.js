@@ -2,11 +2,10 @@ import {useEffect, useState} from 'react';
 import http from "../plugin/https";
 import PostComp from "../components/PostComp";
 import useStore from "../store/main";
-import {socket} from "../socket";
 import {useNavigate} from "react-router-dom";
 
 const IndexPage = () => {
-    const { favorites, userConnected} = useStore((state) => state);
+    const { userConnected} = useStore((state) => state);
     const navigate = useNavigate();
     const [posts, setPosts] = useState([]);
 

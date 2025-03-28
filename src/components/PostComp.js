@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 import http from "../plugin/https";
 import useStore from "../store/main";
 import {useNavigate} from "react-router-dom";

@@ -32,8 +32,6 @@ const MessagesPage = () => {
             if (selected) {
                 if (selected.userOne_id === data.userOne_id && selected.userTwo_id === data.userTwo_id) {
                     setConvers(data)
-                }else {
-                    // console.log(data)
                 }
             }
         };

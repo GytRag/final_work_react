@@ -1,4 +1,4 @@
-import {useState, useRef, useEffect} from 'react';
+import {useState, useRef} from 'react';
 import http from "../plugin/https";
 const CreatePage = () => {
 
@@ -8,14 +8,12 @@ const CreatePage = () => {
     const titleRef = useRef(null);
     const description = useRef(null);
 
-
     function create() {
         const item = {
             image: imageRef.current.value,
             title: titleRef.current.value,
             description: description.current.value,
         }
-
 
         if(!item.image || !item.title || !item.description) return setError("All fields must be filled in")
 

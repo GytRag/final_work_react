@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import useStore from "../store/main";
 import http from "../plugin/https";
-import {socket} from "../socket";
 
 const UserCardComp = ({item, change, setChange, setConvers}) => {
 
@@ -55,7 +54,6 @@ const UserCardComp = ({item, change, setChange, setConvers}) => {
             setSelected(null)
             setConvers(null)
         }
-
         http.postToken("http://localhost:8001/deletechat/", chat)
             .then(data => {})
     }

@@ -76,7 +76,7 @@ const SinglePostPage = () => {
                         <div className='my-3'>
                             {post.comments.map((x,i) =>
                                 <div key={i}>
-                                    {x.username.toUpperCase()}: {x.comment}
+                                    <span className='fst-italic'>{x.username}:</span> {x.comment}
                                 </div>
                             )}
                         </div>

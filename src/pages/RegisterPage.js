@@ -1,5 +1,6 @@
 import {useRef, useState} from 'react';
 import {useNavigate} from "react-router-dom";
+import http from "../plugin/https";
 
 const RegisterPage = () => {
 
@@ -11,23 +12,12 @@ const RegisterPage = () => {
     const nav = useNavigate();
 
     function register() {
-
         const item = {
             username: usernameRef.current.value,
             passOne: passOneRef.current.value,
             passTwo: passTwoRef.current.value
         }
-
-        const options = {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(item)
-        }
-
-        fetch('http://localhost:8001/register', options)
-            .then(res => res.json())
+        http.post(`http://localhost:8001/register`, item)
             .then(data => {
                 if(!data.success) setError(data.message)
                 if(data.success) {

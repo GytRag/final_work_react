@@ -3,7 +3,6 @@ import {Link, useNavigate} from "react-router-dom";
 import useStore from "../store/main";
 import {socket} from "../socket";
 
-
 const Tollbar = () => {
     const navigate = useNavigate();
     const {
@@ -20,9 +19,8 @@ const Tollbar = () => {
         select,
         setSelectPage
     } = useStore((state) => state);
-    // const [select, setSelect] = useState("Home");
-    const [change, setChange] = useState(false);
 
+    const [change, setChange] = useState(false);
 
     function logout() {
         navigate('/login')
