@@ -48,8 +48,8 @@ const PostComp = ({post}) => {
                     <h2 onClick={() => gotTo(`/post/${post._id}`)} className='fs-1 me-1 cursor-point'>{post.title}</h2>
                     <p onClick={() => gotTo(`/user/${post.name}`)} className='cursor-point my-1'>Created
                         by: <b>{post.name}</b></p>
-                    {!inFav && <button onClick={addToFavorite} className="mt-2">Add to favorite</button>}
-                    {inFav && <button onClick={RemoveToFavorite} className="mt-2">Remove from favorites</button>}
+                    {!inFav && <button onClick={addToFavorite} className="mt-2 btn btn-outline-dark">Add to favorite</button>}
+                    {inFav && <button onClick={RemoveToFavorite} className="mt-2 btn btn-dark">Remove from favorites</button>}
                 </div>
             </div>
         </div>

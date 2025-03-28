@@ -101,21 +101,21 @@ const MessagesPage = () => {
 
 
     return (
-        <div>
+        <div className='container-fluid m-1 mt-2'>
             {chat && chat.length === 0 &&
-                <div className='border border-black m-2 p-2 rounded-2 text-center'>
+                <div className='m-2 p-2 rounded-2 text-center'>
                     <h4>You have no messages</h4>
                 </div>
             }
 
-            {chat && chat.length > 0 && <div className='messagePage border border-black m-2 p-2 rounded-2 d-flex gap-2'>
+            {chat && chat.length > 0 && <div className='messagePage rounded-2 d-flex gap-2'>
                 <div className='grow2'>
                     {chat && chat.map(x => <UserCardComp key={x._id} item={x} change={change} setChange={setChange}/>)}
                 </div>
 
                 <div className='grow3'>
                     {convers &&
-                        <div className='border p-2 rounded-2 d-flex flex-column justify-content-between h-100'>
+                        <div className='border bdGrey p-2 rounded-2 d-flex flex-column justify-content-between h-100'>
                             <div className='overflow-auto mb-2'>
                                 {convers.messages.map((x, i) =>
                                     <div key={i}>
@@ -132,7 +132,7 @@ const MessagesPage = () => {
                                                     </button>
                                                 </div>
                                                 <div className='d-flex justify-content-end'>
-                                                 <span style={{backgroundColor: "lightblue"}}
+                                                 <span style={{backgroundColor: "#FFFFFF"}}
                                                        className='p-1 rounded-1'>{x.message}</span>
                                                 </div>
                                             </div>
@@ -146,7 +146,7 @@ const MessagesPage = () => {
                                                 }).format(x.timestamp)}
                                                 </div>
                                                 <div className='d-flex justify-content-start'>
-                                                    <span style={{backgroundColor: "lightgray"}}
+                                                    <span style={{backgroundColor: "#ddcdcd"}}
                                                           className='p-1 rounded-1'>{x.message}</span>
                                                 </div>
                                             </div>
@@ -155,9 +155,9 @@ const MessagesPage = () => {
                                 )}
                             </div>
 
-                            <div>
-                                <input type="text" placeholder="message" ref={inpRef}/>
-                                <button onClick={sendMessage}>send</button>
+                            <div className='inpBut'>
+                                <input className='bdGrey' type="text" placeholder="message" ref={inpRef}/>
+                                <button className='' onClick={sendMessage}>send</button>
                             </div>
                         </div>
                     }

@@ -29,7 +29,7 @@ const FavoriteComp = ({post}) => {
                     <h2 onClick={() => gotTo(`/post/${post._id}`)} className='fs-1 me-1 cursor-point'>{post.title}</h2>
                     <p onClick={() => gotTo(`/user/${post.name}`)} className='cursor-point  my-1'>Created
                         by: <b>{post.name}</b></p>
-                    <button onClick={RemoveToFavorite} className="mt-2">Remove from favorites</button>
+                    <button onClick={RemoveToFavorite} className="mt-2 btn btn-dark">Remove from favorites</button>
                 </div>
             </div>
         </div>

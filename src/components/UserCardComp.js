@@ -62,17 +62,21 @@ const UserCardComp = ({item, change, setChange}) => {
         return newMessages.find(fin => fin === item._id)
     }
 
+    const colorGet = '#ddcdcd'
+    const colorSet = '#FFFFFF'
+    const colorNo = '#f6f6f6'
+
     return (
         <div className='mb-2'>
             {chatWith &&
-                <div style={{backgroundColor: selected? selected._id === item._id? "lightblue":fin()?"#fbc058":"" : fin()?"#fbc058":""}}
+                <div style={{backgroundColor: selected? selected._id === item._id? colorSet:fin()?colorGet:colorNo : fin()?colorGet:colorNo}}
                     className='d-flex align-items-center gap-2 border rounded-2 p-2'>
                     <div onClick={select}
                         className='d-flex align-items-center gap-2 cursor-point w-100'>
                         <div><img className='chatImg' src={chatWith.image} alt=""/></div>
                         <div>{chatWith.name}</div>
                     </div>
-                    <button onClick={deleteChat} className='text-nowrap'>Delete chat</button>
+                    <button onClick={deleteChat} className='text-nowrap btn btn-outline-dark'>Delete chat</button>
                 </div>
             }
         </div>

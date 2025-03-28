@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useEffect} from 'react';
 import http from "../plugin/https";
 import PostComp from "../components/PostComp";
 import useStore from "../store/main";
@@ -23,7 +23,7 @@ const IndexPage = () => {
     }, []);
 
     return (
-        <div className='indexPage container-fluid mt-2'>
+        <div className='indexPage container-fluid mt-1'>
             {posts && posts.map((post) => <PostComp key={post._id} post={post}/>)}
         </div>
     );

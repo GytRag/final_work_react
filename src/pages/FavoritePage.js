@@ -6,7 +6,7 @@ const FavoritePage = () => {
     const { favorites} = useStore((state) => state);
 
     return (
-        <div className='favoritePage container-fluid mt-2'>
+        <div className='favoritePage container-fluid mt-1'>
             {favorites && favorites.map(post => <FavoriteComp key={post._id} post={post} />)}
         </div>
     );
