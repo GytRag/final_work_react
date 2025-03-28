@@ -115,7 +115,7 @@ const Tollbar = () => {
 
             </div>
             {userConnected && <div className='d-flex gap-3 align-items-center ms-2'>
-                <div onClick={() => console.log(newMessages)}>{userConnected && userConnected.username}</div>
+                <div>{userConnected && userConnected.username}</div>
                 <button onClick={logout}>Logout</button>
             </div>}
 

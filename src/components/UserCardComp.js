@@ -49,16 +49,25 @@ const UserCardComp = ({item, change, setChange, setConvers}) => {
             chat: item,
         }
 
-        if(selected && selected._id === item._id) if(selected === item) setSelected(null)
+        setNewMessages(newMessages.filter(fil => fil !== item._id))
+
+        if(selected && selected._id === item._id) if(selected === item) {
+            setSelected(null)
+            setConvers(null)
+        }
 
         http.postToken("http://localhost:8001/deletechat/", chat)
             .then(data => {})
     }
 
+    function fin() {
+        return newMessages.find(fin => fin === item._id)
+    }
+
     return (
         <div className='mb-2'>
             {chatWith &&
-                <div style={{backgroundColor: selected? selected._id === item._id? "lightblue":newMessages.find(fin => fin === item._id)? "#fbc058":''    : ""}}
+                <div style={{backgroundColor: selected? selected._id === item._id? "lightblue":fin()?"#fbc058":"" : fin()?"#fbc058":""}}
                     className='d-flex align-items-center gap-2 border rounded-2 p-2'>
                     <div onClick={select}
                         className='d-flex align-items-center gap-2 cursor-point w-100'>

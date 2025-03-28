@@ -40,6 +40,8 @@ const MessagesPage = () => {
 
         const handleGetChat = (data) => {
             setChat(data)
+            const select = data.find(fin => fin._id !== selected._id)
+            if(select) setConvers(null)
         };
 
         socket.on("sendMessage", handleSendMessage);
