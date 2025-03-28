@@ -42,6 +42,7 @@ const Tollbar = () => {
     function navPage(page) {
         setSelectPage(page)
         setSelected(null)
+        setConvers(null)
     }
 
     useEffect(() => {

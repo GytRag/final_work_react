@@ -95,57 +95,51 @@ const ProfilePage = () => {
 
 
     return (
-        <div>
-            {userConnected && <div className='m-2 gap-1 p-2 d-flex'>
-                <div className='gap-1 p-2 d-flex flex-column align-items-center border rounded-2'>
-                    <div>
-                        <img className='userImg' src={userConnected.image} alt=""/>
-                    </div>
-                    <div>
-                        <input type="text" placeholder='image url' ref={imageRef}/>
-                    </div>
-                    {errorUrl && <div>{errorUrl}</div>}
-                    <div>
+        <div className='container-fluid mt-2'>
+            {userConnected && <div className='gap-1 d-flex justify-content-center'>
+                <div className='border border-black rounded-2 p-2 d-flex gap-2'>
+                    <div className='p-2 userImg d-flex flex-column border rounded-2'>
+                        <div>
+                            <img className='w-100 pb-1' src={userConnected.image} alt=""/>
+                        </div>
+                        <div>
+                            <input className='w-100' type="text" placeholder='image url' ref={imageRef}/>
+                        </div>
+                        {errorUrl && <div>{errorUrl}</div>}
                         <button onClick={updateImg}>Change photo</button>
                     </div>
-                </div>
-                <div className='gap-1 p-2 d-flex flex-column align-items-center'>
 
-
-                    <div className='border rounded-2 p-2 gap-1 p-2 d-flex flex-column align-items-center'>
-                        <div>
-                            <input type="text" placeholder='new username' ref={usernameRef}/>
-                        </div>
-                        {errorUsername && <div>{errorUsername}</div>}
-                        <div>
+                    <div className='gap-1 p-2 justify-content-between d-flex flex-column border rounded-2'>
+                        <div className='d-flex flex-column'>
+                            <div>
+                                <input type="text" placeholder='new username' ref={usernameRef}/>
+                            </div>
+                            {errorUsername && <div>{errorUsername}</div>}
                             <button onClick={updateUsername}>Change username</button>
                         </div>
-                    </div>
 
-                    <div className='border rounded-2 p-2 gap-1 p-2 d-flex flex-column align-items-center'>
-                        <div>
-                            <input type="password" placeholder='new password' ref={newPassRef}/>
-                        </div>
-                        <div>
-                            <input type="password" placeholder='new password repeat' ref={newPassRepeatRef}/>
-                        </div>
-                        {errorNewPassword && <div>{errorNewPassword}</div>}
-                        <div>
+                        <div className='d-flex flex-column'>
+                            <div>
+                                <input type="password" placeholder='new password' ref={newPassRef}/>
+                            </div>
+                            <div>
+                                <input type="password" placeholder='new password repeat' ref={newPassRepeatRef}/>
+                            </div>
+                            {errorNewPassword && <div>{errorNewPassword}</div>}
                             <button onClick={updatePassword}>Change password</button>
                         </div>
-                    </div>
 
-                    <div className='border rounded-2 p-2 gap-1 p-2 d-flex flex-column align-items-center'>
-                        <div>
-                            <input type="password" placeholder='password' ref={passwordRef}/>
+                        <div className='d-flex flex-column'>
+                            <div>
+                                <input type="password" placeholder='password' ref={passwordRef}/>
+                            </div>
+                            {error && <div>{error}</div>}
+                                <button onClick={deleteUser}>Delete account</button>
                         </div>
-                        {error && <div>{error}</div>}
-                        <div>
-                            <button onClick={deleteUser}>Delete account</button>
-                        </div>
-                    </div>
 
+                    </div>
                 </div>
+
             </div>}
 
 

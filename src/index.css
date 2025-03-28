@@ -1,23 +1,6 @@
-
-
-
-.gap10 {
-    gap: 10px;
+.App {
+    min-width: 300px;
 }
-.gap2 {
-    gap: 2px;
-}
-.border {
-    border: 1px solid black;
-}
-
-.pad5 {
-    padding: 5px;
-}
-.marg-bot {
-    margin-bottom: 5px;
-}
-
 
 .cursor-point {
     cursor: pointer;
@@ -62,20 +45,17 @@
 
 /*-----------------------------*/
 
-.userImg {
-    width: 200px;
-}
-
-.image {
-    width: 100%;
-}
-
 .link {
     text-decoration: none;
 }
 
+.indexPage, .favoritePage {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr))
+}
+
 .post {
-    width: 200px;
+    max-width: 400px;
 }
 
 .post h2:hover {
@@ -87,6 +67,14 @@
 }
 .singlePostUsername:hover {
     scale: 1.1 !important;
+}
+
+.userImg {
+    width: 200px;
+}
+
+.createPost {
+    width: 500px;
 }
 
 .chatImg {
@@ -108,4 +96,16 @@
     right: -10px;
     font-size: 20px;
     color: #efb348;
+}
+
+@media screen and (width < 540px) {
+    .post {
+        max-width: 100%;
+    }
+    .createPost {
+        width: 300px;
+    }
+    .messagePage{
+        flex-direction: column !important;
+    }
 }

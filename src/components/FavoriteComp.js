@@ -22,12 +22,15 @@ const FavoriteComp = ({post}) => {
     }
 
     return (
-        <div className='post border rounded-2 p-3 d-flex flex-column justify-content-between'>
-            <img className='image' src={post.image} alt=""/>
-            <div>
-                <h2 onClick={() => gotTo(`/post/${post._id}`)} className='fs-1 me-1 cursor-point'>{post.title}</h2>
-                <p onClick={() => gotTo(`/user/${post.name}`)} className='cursor-point  my-1'>Created by: <b>{post.name}</b></p>
-                <button onClick={RemoveToFavorite} className="mt-2">Remove from favorites</button>
+        <div className='m-1 d-flex'>
+            <div className='post border rounded-2 p-3 d-flex flex-column justify-content-between'>
+                <img className='w-100' src={post.image} alt=""/>
+                <div>
+                    <h2 onClick={() => gotTo(`/post/${post._id}`)} className='fs-1 me-1 cursor-point'>{post.title}</h2>
+                    <p onClick={() => gotTo(`/user/${post.name}`)} className='cursor-point  my-1'>Created
+                        by: <b>{post.name}</b></p>
+                    <button onClick={RemoveToFavorite} className="mt-2">Remove from favorites</button>
+                </div>
             </div>
         </div>
     );

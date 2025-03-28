@@ -23,7 +23,7 @@ const IndexPage = () => {
     }, []);
 
     return (
-        <div className='m-2 d-flex flex-wrap gap-1'>
+        <div className='indexPage container-fluid mt-2'>
             {posts && posts.map((post) => <PostComp key={post._id} post={post}/>)}
         </div>
     );

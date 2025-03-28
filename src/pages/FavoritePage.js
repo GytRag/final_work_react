@@ -6,7 +6,7 @@ const FavoritePage = () => {
     const { favorites} = useStore((state) => state);
 
     return (
-        <div className='d-flex flex-wrap m-2 gap-1'>
+        <div className='favoritePage container-fluid mt-2'>
             {favorites && favorites.map(post => <FavoriteComp key={post._id} post={post} />)}
         </div>
     );

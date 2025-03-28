@@ -108,7 +108,7 @@ const MessagesPage = () => {
                 </div>
             }
 
-            {chat && chat.length > 0 && <div className='border border-black m-2 p-2 rounded-2 d-flex gap-2'>
+            {chat && chat.length > 0 && <div className='messagePage border border-black m-2 p-2 rounded-2 d-flex gap-2'>
                 <div className='grow2'>
                     {chat && chat.map(x => <UserCardComp key={x._id} item={x} change={change} setChange={setChange}/>)}
                 </div>

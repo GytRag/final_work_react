@@ -29,9 +29,8 @@ const CreatePage = () => {
 
 
     return (
-        <div className='m-2 border border-black rounded-2 d-flex gap-2 p-2'>
-            <div className='border rounded-2 p-1 grow2'>
-
+        <div className='container-fluid d-flex p-2 justify-content-center'>
+            <div className='createPost border border-black rounded-2 p-2'>
                 <div className='d-flex flex-column'>
                     <input type="text" placeholder='image url' ref={imageRef}/>
                     <input type="text" placeholder='title' ref={titleRef}/>
@@ -39,9 +38,7 @@ const CreatePage = () => {
                     {error && <div>{error}</div>}
                     <button onClick={create}>Create post</button>
                 </div>
-
             </div>
-
         </div>
     );
 };
