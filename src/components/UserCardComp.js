@@ -2,9 +2,9 @@ import React, {useState} from 'react';
 import useStore from "../store/main";
 import http from "../plugin/https";
 
-const UserCardComp = ({item, change, setChange, setConvers}) => {
+const UserCardComp = ({item, change, setChange}) => {
 
-    const {userConnected, selected, setSelected, newMessages, setNewMessages } = useStore((state) => state);
+    const {userConnected, selected, setSelected, newMessages, setNewMessages, setConvers } = useStore((state) => state);
     const [chatWith, setChatWith] = useState(null);
 
     if (!chatWith) {

@@ -7,6 +7,7 @@ const Tollbar = () => {
     const navigate = useNavigate();
     const {
         userConnected,
+        setPosts,
         setPost,
         setNewMessages,
         newMessages,
@@ -17,7 +18,8 @@ const Tollbar = () => {
         setSelected,
         selected,
         select,
-        setSelectPage
+        setSelectPage,
+        setConvers
     } = useStore((state) => state);
 
     const [change, setChange] = useState(false);
@@ -29,7 +31,10 @@ const Tollbar = () => {
         setUserData(null)
         setUserPosts(null)
         setSelected(null)
+        setPosts(null)
         setPost(null)
+        setConvers(null)
+        setSelectPage("Home")
         localStorage.setItem("token", null)
 
     }

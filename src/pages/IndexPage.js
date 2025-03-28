@@ -5,9 +5,8 @@ import useStore from "../store/main";
 import {useNavigate} from "react-router-dom";
 
 const IndexPage = () => {
-    const { userConnected} = useStore((state) => state);
+    const { userConnected, posts, setPosts} = useStore((state) => state);
     const navigate = useNavigate();
-    const [posts, setPosts] = useState([]);
 
     useEffect(() => {
         if(userConnected) {

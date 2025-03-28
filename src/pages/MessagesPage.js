@@ -5,12 +5,12 @@ import UserCardComp from "../components/UserCardComp";
 import {socket} from "../socket";
 
 const MessagesPage = () => {
-    const {userConnected, selected} = useStore((state) => state);
+    const {userConnected, selected, convers, setConvers} = useStore((state) => state);
 
     const [chat, setChat] = useState(null);
     const inpRef = useRef(null);
     const [change, setChange] = useState(false);
-    const [convers, setConvers] = useState(null)
+    // const [convers, setConvers] = useState(null)
 
     useEffect(() => {
         http.getToken(`http://localhost:8001/getmessage`)
@@ -110,8 +110,7 @@ const MessagesPage = () => {
 
             {chat && chat.length > 0 && <div className='border border-black m-2 p-2 rounded-2 d-flex gap-2'>
                 <div className='grow2'>
-                    {chat && chat.map(x => <UserCardComp key={x._id} item={x} change={change} setChange={setChange}
-                                                         setConvers={setConvers} setChat={setChat} />)}
+                    {chat && chat.map(x => <UserCardComp key={x._id} item={x} change={change} setChange={setChange}/>)}
                 </div>
 
                 <div className='grow3'>
