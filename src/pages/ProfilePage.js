@@ -96,9 +96,9 @@ const ProfilePage = () => {
 
     return (
         <div className='container-fluid mt-2'>
-            {userConnected && <div className='gap-1 d-flex justify-content-center'>
-                <div className='border border-black rounded-2 p-2 d-flex gap-2'>
-                    <div className='p-2 userImg d-flex flex-column border rounded-2'>
+            {userConnected && <div className='gap-1 d-flex justify-content-center inpFocus'>
+                <div className='shadow rounded-2 p-2 d-flex gap-2'>
+                    <div className='p-2 userImg d-flex flex-column rounded-2'>
                         <div>
                             <img className='w-100 pb-1' src={userConnected.image} alt=""/>
                         </div>
@@ -109,7 +109,7 @@ const ProfilePage = () => {
                         <button onClick={updateImg}>Change photo</button>
                     </div>
 
-                    <div className='gap-1 p-2 justify-content-between d-flex flex-column border rounded-2'>
+                    <div className='gap-1 p-2 justify-content-between d-flex flex-column rounded-2'>
                         <div className='d-flex flex-column'>
                             <div>
                                 <input type="text" placeholder='new username' ref={usernameRef}/>

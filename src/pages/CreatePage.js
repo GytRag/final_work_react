@@ -30,7 +30,7 @@ const CreatePage = () => {
 
     return (
         <div className='container-fluid d-flex p-2 justify-content-center'>
-            <div className='createPost border border-black rounded-2 p-2'>
+            <div className='createPost rounded-2 p-2 inpFocus shadow'>
                 <div className='d-flex flex-column'>
                     <input type="text" placeholder='image url' ref={imageRef}/>
                     <input type="text" placeholder='title' ref={titleRef}/>

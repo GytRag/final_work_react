@@ -43,7 +43,7 @@
 .w40 {
     width: 40%;
 }
-.inpBut input {
+.inpBut input, .inpBut textarea {
     padding: 5px 5px 5px 10px;
     border-radius: 5px 0 0 5px;
     border: none;
@@ -59,7 +59,40 @@
     border-radius: 0 5px 5px 0;
     padding: 5px 10px 5px 10px;
     background-color: #FFFFFF;
+    transition: 0.2s ease;
 }
+.inpBut button:hover {
+    background-color: #212529;
+    color: #FFFFFF;
+}
+
+
+/*---------input && btn ---------*/
+.inpFocus input{
+    padding: 5px 10px;
+}
+.inpFocus input:focus {
+    outline: none;
+}
+.inpFocus textarea:focus {
+    outline: none;
+}
+.inpFocus button {
+    border: 1px solid black;
+    background-color: #FFFFFF;
+    transition: 0.2s ease;
+    padding: 5px 10px;
+}
+.inpFocus button:hover {
+    background-color: #212529;
+    color: #FFFFFF;
+}
+
+.minMax {
+    min-width: 300px;
+    max-width: 450px;
+}
+
 /*-----------------------------*/
 .bdGrey {
     background-color: #f6f6f6;
@@ -74,14 +107,14 @@
 }
 
 .post h2:hover {
-    scale: 1.1 !important;
+    scale: 1.05 !important;
 }
 
 .post p:hover {
-    scale: 1.1 !important;
+    scale: 1.05 !important;
 }
 .singlePostUsername:hover {
-    scale: 1.1 !important;
+    scale: 1.05 !important;
 }
 
 .userImg {

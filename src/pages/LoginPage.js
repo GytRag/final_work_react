@@ -33,15 +33,11 @@ const LoginPage = () => {
     }
 
     return (
-        <div className='d-flex flex-column gap-1 align-items-center m-2'>
-            <div>
-                <input type="text" placeholder='username' ref={usernameRef} defaultValue={'gytis'}/>
-            </div>
-            <div>
-                <input type="password" placeholder='password' ref={passOneRef} defaultValue={'gytis'}/>
-            </div>
-            {error && <div>{error}</div>}
-            <div>
+        <div className='inpFocus d-flex flex-column align-items-center m-2'>
+            <div className='d-flex flex-column minMax shadow p-2 rounded-2'>
+                <input type="text" placeholder='username' ref={usernameRef}/>
+                <input type="password" placeholder='password' ref={passOneRef}/>
+                {error && <div className='m-2'>{error}</div>}
                 <button onClick={login}>Login</button>
             </div>
         </div>

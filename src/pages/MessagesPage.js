@@ -10,7 +10,6 @@ const MessagesPage = () => {
     const [chat, setChat] = useState(null);
     const inpRef = useRef(null);
     const [change, setChange] = useState(false);
-    // const [convers, setConvers] = useState(null)
 
     useEffect(() => {
         http.getToken(`http://localhost:8001/getmessage`)
@@ -115,7 +114,7 @@ const MessagesPage = () => {
 
                 <div className='grow3'>
                     {convers &&
-                        <div className='border bdGrey p-2 rounded-2 d-flex flex-column justify-content-between h-100'>
+                        <div className='shadow bdGrey p-2 rounded-2 d-flex flex-column justify-content-between h-100'>
                             <div className='overflow-auto mb-2'>
                                 {convers.messages.map((x, i) =>
                                     <div key={i}>
@@ -133,7 +132,7 @@ const MessagesPage = () => {
                                                 </div>
                                                 <div className='d-flex justify-content-end'>
                                                  <span style={{backgroundColor: "#FFFFFF"}}
-                                                       className='p-1 rounded-1'>{x.message}</span>
+                                                       className='p-1 rounded-1 shadow-sm'>{x.message}</span>
                                                 </div>
                                             </div>
                                             :
@@ -146,8 +145,8 @@ const MessagesPage = () => {
                                                 }).format(x.timestamp)}
                                                 </div>
                                                 <div className='d-flex justify-content-start'>
-                                                    <span style={{backgroundColor: "#ddcdcd"}}
-                                                          className='p-1 rounded-1'>{x.message}</span>
+                                                    <span style={{backgroundColor: "#e8e8e8"}}
+                                                          className='p-1 rounded-1 shadow-sm'>{x.message}</span>
                                                 </div>
                                             </div>
                                         }

@@ -49,11 +49,27 @@ const SinglePostPage = () => {
     }
 
     return (
-        <div className='m-2 border border-black rounded-2 p-2'>
+        <div className='m-2 shadow rounded-2 p-2'>
             {post &&
                 <div>
                     <div className='d-flex' >
-                        <div className='w-50'><img className='w-100' src={post.image} alt=""/></div>
+                        <div className='w-50'>
+                            <img className='w-100' src={post.image} alt=""/>
+                            <div>
+                                <div className='my-3'>
+                                    {post.comments.map((x, i) =>
+                                        <div key={i}>
+                                            <span className='fst-italic'>{x.username}:</span> {x.comment}
+                                        </div>
+                                    )}
+                                </div>
+                                <div className='inpBut shadow d-flex rounded-2'>
+                                    <input className='w-100' type="text" placeholder='add comment' ref={inpRef}/>
+                                    <button onClick={addComment}>Comment</button>
+                                </div>
+                            </div>
+                        </div>
+
                         <div className='ms-3'>
                             <h4>{post.title}</h4>
                             <p>{post.description}</p>
@@ -68,21 +84,7 @@ const SinglePostPage = () => {
                                 hour12: false                // Use 24-hour format
                             }).format(post.timestamp)}</div>
                             <p onClick={() => nav(`/user/${post.name}`)}  className='cursor-point my-1 singlePostUsername'>Created by: <b>{post.name}</b></p>
-                            {post.user_id === userConnected._id && <button onClick={deletePost}>Delete post</button>}
-                        </div>
-                    </div>
-
-                    <div>
-                        <div className='my-3'>
-                            {post.comments.map((x,i) =>
-                                <div key={i}>
-                                    <span className='fst-italic'>{x.username}:</span> {x.comment}
-                                </div>
-                            )}
-                        </div>
-                        <div>
-                            <input className='w-50' type="text" placeholder='add comment' ref={inpRef}/>
-                            <button onClick={addComment}>Comment</button>
+                            {post.user_id === userConnected._id && <button className='btn btn-outline-dark' onClick={deletePost}>Delete post</button>}
                         </div>
                     </div>
                 </div>

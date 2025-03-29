@@ -83,7 +83,7 @@ const Tollbar = () => {
 
     return (
         <div
-            className='tollBarr rounded-2 m-2 mb-0 p-2 d-flex tollBar justify-content-between align-items-start'>
+            className='tollBarr rounded-2 m-2 mb-4 p-2 d-flex tollBar justify-content-between align-items-start shadow'>
             <div className='d-flex gap-1 flex-wrap bgDark'>
 
                 {userConnected && <Link onClick={() => navPage('Home')}
@@ -115,8 +115,6 @@ const Tollbar = () => {
                 <h5 className='mb-0' >{userConnected && userConnected.username}</h5>
                 <button className='btn btn-outline-dark' onClick={logout}>Logout</button>
             </div>}
-
-
         </div>
     );
 };

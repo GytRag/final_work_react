@@ -33,13 +33,13 @@ const SingleUserPage = () => {
     }
 
     return (
-        <div className='m-2 border border-black rounded-2 p-2'>
+        <div className='m-2 shadow rounded-2 p-2'>
             {userData && <div>
-                <div className='d-flex mb-5'>
+                <div className='d-flex mb-5 p-2'>
                     <div><img className='userImg' src={userData.image} alt=""/></div>
-                    <div className='ms-2 d-flex flex-column justify-content-between my-4'>
-                        <div className='mb-3'>{userData.username}</div>
-                        {userConnected.username !== userData.username && <div className='d-flex gap-1'>
+                    <div className='ms-4 d-flex flex-column justify-content-between my-4'>
+                        <div className='mb-3 fs-3'>User: <b>{userData.username}</b></div>
+                        {userConnected.username !== userData.username && <div className='d-flex shadow inpBut rounded-2'>
                             <textarea placeholder='message' ref={inpRef} cols="30" rows="3"></textarea>
                             <button onClick={sendMessage}>send</button>
                         </div>}
@@ -48,7 +48,7 @@ const SingleUserPage = () => {
 
 
                 <div>
-                    <div>Posts by: <b>{userData.username}</b></div>
+                    <div className='ms-2'>Posts by: <b>{userData.username}</b></div>
                     <div className='d-flex gap-1 flex-wrap mt-2'>
                         {userPosts.map((x,i) => <PostComp post={x} key={i}/>)}
                     </div>
