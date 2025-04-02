@@ -10,7 +10,7 @@ const IndexPage = () => {
 
     useEffect(() => {
         if(userConnected) {
-            http.getToken("http://localhost:8001/allPosts")
+            http.getToken("/allPosts")
                 .then(data => {
                     if (data.success) setPosts(data.posts)
                 })

@@ -25,7 +25,7 @@ const ProfilePage = () => {
             username: usernameRef.current.value
         }
         if (!item.username) return setErrorUsername("Add username")
-        http.postToken("http://localhost:8001/updateusername", item)
+        http.postToken("/updateusername", item)
             .then(data => {
                 if (!data.success) setErrorUsername(data.message)
                 if (data.success) {
@@ -44,7 +44,7 @@ const ProfilePage = () => {
         }
 
         if (!item.image) return setErrorUrl("Add url")
-        http.postToken("http://localhost:8001/updateimg", item)
+        http.postToken("/updateimg", item)
             .then(data => {
                 if (!data.success) setErrorUrl(data.message)
                 if (data.success) {
@@ -60,7 +60,7 @@ const ProfilePage = () => {
             password: passwordRef.current.value
         }
 
-        http.postToken("http://localhost:8001/deleteuser", item)
+        http.postToken("/deleteuser", item)
             .then(data => {
                 if (!data.success) setError(data.message)
                 if (data.success) {
@@ -82,7 +82,7 @@ const ProfilePage = () => {
         if (!item.passOne) return setErrorNewPassword("Add password")
         if (item.passOne !== item.passTwo) return setErrorNewPassword("Passwords do not match")
 
-        http.postToken("http://localhost:8001/updatepassword", item)
+        http.postToken("/updatepassword", item)
             .then(data => {
                 if (!data.success) setErrorNewPassword(data.message)
                 if (data.success) {

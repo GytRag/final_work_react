@@ -17,7 +17,7 @@ const CreatePage = () => {
 
         if(!item.image || !item.title || !item.description) return setError("All fields must be filled in")
 
-        http.postToken("http://localhost:8001/createPost", item)
+        http.postToken("/createPost", item)
             .then(data => {
                 if (!data.success) setError(data.message)
                 if (data.success) {

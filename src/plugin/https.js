@@ -1,8 +1,11 @@
+const mainUrl = "http://213.136.82.182:8001"
+//make mainUrl + url and remove "mainUrl" in pages fetch
+
 module.exports =  {
     get: (url) => {
         return new Promise(resolve => {
-
-            fetch(url)
+            // fetch(mainUrl + url)
+            fetch(mainUrl + url)
                 .then(res => res.json())
                 .then(data => {
                     resolve(data)
@@ -20,8 +23,8 @@ module.exports =  {
                 },
                 body: JSON.stringify(data)
             }
-
-            fetch(url, options)
+            // fetch(mainUrl + url)
+            fetch(mainUrl + url, options)
                 .then(res => res.json())
                 .then(data => {
                     resolve(data)
@@ -38,8 +41,8 @@ module.exports =  {
                     authorization: localStorage.getItem('token'),
                 }
             }
-
-            fetch(url, options)
+            // fetch(mainUrl + url)
+            fetch(mainUrl + url, options)
                 .then(res => res.json())
                 .then(data => {
                     resolve(data)
@@ -58,8 +61,8 @@ module.exports =  {
                 },
                 body: JSON.stringify(data)
             }
-
-            fetch(url, options)
+            // fetch(mainUrl + url)
+            fetch(mainUrl + url, options)
                 .then(res => res.json())
                 .then(data => {
                     resolve(data)

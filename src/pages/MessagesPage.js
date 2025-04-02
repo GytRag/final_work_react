@@ -12,7 +12,7 @@ const MessagesPage = () => {
     const [change, setChange] = useState(false);
 
     useEffect(() => {
-        http.getToken(`http://localhost:8001/getmessage`)
+        http.getToken(`/getmessage`)
             .then(data => {
                 setChat(data.existChat)
                 if(selected) {
@@ -74,7 +74,7 @@ const MessagesPage = () => {
                 image: selected.userOne_image,
             }
         }
-        http.postToken("http://localhost:8001/sendmessage/", item)
+        http.postToken("/sendmessage/", item)
             .then(data => {
                 if (data.success) {
                     inpRef.current.value = null;
@@ -90,7 +90,7 @@ const MessagesPage = () => {
             chat_id: selected._id,
             chatToSend
         }
-        http.postToken("http://localhost:8001/deletemessage/", item)
+        http.postToken("/deletemessage/", item)
             .then(data => {
                 if (data.success) {
                     setChange(!change)

@@ -12,7 +12,7 @@ const SingleUserPage = () => {
     const inpRef = useRef(null);
 
     useEffect(() => {
-        http.getToken("http://localhost:8001/user/" + username)
+        http.getToken("/user/" + username)
             .then(data => {
                 setUserPosts(data.userPosts)
                 setUserData(data.userData)
@@ -26,7 +26,7 @@ const SingleUserPage = () => {
             messTo: userData
         }
 
-        http.postToken("http://localhost:8001/sendmessage/", item)
+        http.postToken("/sendmessage", item)
             .then(data => {
                 if(data.success) inpRef.current.value = null;
             })

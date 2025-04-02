@@ -17,7 +17,7 @@ const RegisterPage = () => {
             passOne: passOneRef.current.value,
             passTwo: passTwoRef.current.value
         }
-        http.post(`http://localhost:8001/register`, item)
+        http.post(`/register`, item)
             .then(data => {
                 if (!data.success) setError(data.message)
                 if (data.success) {

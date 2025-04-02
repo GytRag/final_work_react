@@ -17,7 +17,7 @@ const PostComp = ({post}) => {
         const item = {
             post
         }
-        http.postToken("http://localhost:8001/addfavorite", item)
+        http.postToken("/addfavorite", item)
             .then(data => {
                 setFavorites(data.favoritePosts)
             })
@@ -27,7 +27,7 @@ const PostComp = ({post}) => {
         const item = {
             post
         }
-        http.postToken("http://localhost:8001/deleteFavorite", item)
+        http.postToken("/deleteFavorite", item)
             .then(data => {
                 setFavorites(data.favoritePosts)
                 setInFav(null)

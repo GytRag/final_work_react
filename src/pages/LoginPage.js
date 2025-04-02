@@ -19,7 +19,7 @@ const LoginPage = () => {
             username: usernameRef.current.value,
             password: passOneRef.current.value
         }
-        http.post(`http://localhost:8001/login`, item)
+        http.post(`/login`, item)
             .then(data => {
                 if(!data.success) setError(data.message)
                 if(data.success) {

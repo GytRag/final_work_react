@@ -13,7 +13,7 @@ const SinglePostPage = () => {
 
     useEffect(() => {
 
-        http.getToken("http://localhost:8001/post/" + post_id)
+        http.getToken("/post/" + post_id)
             .then(data => {
                 setPost(data.currentPost)
             })
@@ -26,7 +26,7 @@ const SinglePostPage = () => {
             post_id
         }
 
-        http.postToken("http://localhost:8001/addcomment", item)
+        http.postToken("/addcomment", item)
             .then(data => {
                 inpRef.current.value = null;
                 setChange(!change)
@@ -38,7 +38,7 @@ const SinglePostPage = () => {
             post
         }
 
-        http.postToken("http://localhost:8001/deletepost", item)
+        http.postToken("/deletepost", item)
             .then(data => {
                 if(data.success) {
                     setFavorites(favorites.filter(filt => filt._id !== post_id))

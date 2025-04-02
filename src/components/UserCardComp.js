@@ -54,7 +54,7 @@ const UserCardComp = ({item, change, setChange}) => {
             setSelected(null)
             setConvers(null)
         }
-        http.postToken("http://localhost:8001/deletechat/", chat)
+        http.postToken("/deletechat/", chat)
             .then(data => {})
     }
 

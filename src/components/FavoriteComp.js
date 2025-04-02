@@ -10,7 +10,7 @@ const FavoriteComp = ({post}) => {
         const item = {
             post
         }
-        http.postToken("http://localhost:8001/deleteFavorite", item)
+        http.postToken("/deleteFavorite", item)
             .then(data => {
                 setFavorites(data.favoritePosts)
             })
