@@ -6,7 +6,7 @@ import http from "../plugin/https";
 
 const LoginPage = () => {
 
-    const {setUserConnected, setFavorites} = useStore((state) => state);
+    const {setUserConnected, setFavorites, mainLink} = useStore((state) => state);
     const nav = useNavigate();
 
     const usernameRef = useRef(null);
@@ -27,7 +27,7 @@ const LoginPage = () => {
                     setFavorites(data.myUser.favorites)
                     localStorage.setItem('token', data.token)
                     socket.emit('login', data.myUser);
-                    nav('/')
+                    nav(mainLink)
                 }
             })
     }

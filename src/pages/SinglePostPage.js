@@ -4,7 +4,7 @@ import http from "../plugin/https";
 import useStore from "../store/main";
 
 const SinglePostPage = () => {
-    const {userConnected, setFavorites, favorites, setPost, post} = useStore((state) => state);
+    const {userConnected, setFavorites, favorites, setPost, post, mainLink} = useStore((state) => state);
 
     const {post_id} = useParams();
     const [change, setChange] = useState(null);
@@ -52,7 +52,7 @@ const SinglePostPage = () => {
         <div className='m-2 shadow rounded-2 p-2'>
             {post &&
                 <div>
-                    <div className='d-flex' >
+                    <div className='d-flex flex-column flex-sm-row' >
                         <div className='w-50'>
                             <img className='w-100' src={post.image} alt=""/>
                             <div>
@@ -83,7 +83,7 @@ const SinglePostPage = () => {
                                 timeZone: 'Europe/Vilnius',  // Explicitly specify the time zone for Lithuania
                                 hour12: false                // Use 24-hour format
                             }).format(post.timestamp)}</div>
-                            <p onClick={() => nav(`/user/${post.name}`)}  className='cursor-point my-1 singlePostUsername'>Created by: <b>{post.name}</b></p>
+                            <p onClick={() => nav(`${mainLink}/user/${post.name}`)}  className='cursor-point my-1 singlePostUsername'>Created by: <b>{post.name}</b></p>
                             {post.user_id === userConnected._id && <button className='btn btn-outline-dark' onClick={deletePost}>Delete post</button>}
                         </div>
                     </div>

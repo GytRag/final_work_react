@@ -5,7 +5,7 @@ import useStore from "../store/main";
 import {useNavigate} from "react-router-dom";
 
 const IndexPage = () => {
-    const { userConnected, posts, setPosts} = useStore((state) => state);
+    const { userConnected, posts, setPosts, mainLink} = useStore((state) => state);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -19,7 +19,7 @@ const IndexPage = () => {
     },[])
 
     useEffect(() => {
-        if(!userConnected) navigate('/login')
+        if(!userConnected) navigate(`${mainLink}/login`)
     }, []);
 
     return (

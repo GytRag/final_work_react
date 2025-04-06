@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useRef} from 'react';
 import {useParams} from "react-router-dom";
 import http from "../plugin/https";
 import PostComp from "../components/PostComp";
@@ -35,7 +35,7 @@ const SingleUserPage = () => {
     return (
         <div className='m-2 shadow rounded-2 p-2'>
             {userData && <div>
-                <div className='d-flex mb-5 p-2'>
+                <div className='d-flex flex-column flex-sm-row mb-5 p-2'>
                     <div><img className='userImg' src={userData.image} alt=""/></div>
                     <div className='ms-4 d-flex flex-column justify-content-between my-4'>
                         <div className='mb-3 fs-3'>User: <b>{userData.username}</b></div>

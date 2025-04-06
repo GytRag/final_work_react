@@ -19,13 +19,14 @@ const Tollbar = () => {
         selected,
         select,
         setSelectPage,
-        setConvers
+        setConvers,
+        mainLink
     } = useStore((state) => state);
 
     const [change, setChange] = useState(false);
 
     function logout() {
-        navigate('/login')
+        navigate(mainLink + '/login')
         setUserConnected(null);
         setFavorites(null)
         setUserData(null)
@@ -40,7 +41,7 @@ const Tollbar = () => {
     }
 
     function navPage(page) {
-        setSelectPage(page)
+        setSelectPage(mainLink + page)
         setSelected(null)
         setConvers(null)
     }
@@ -87,16 +88,16 @@ const Tollbar = () => {
             <div className='d-flex gap-1 flex-wrap bgDark'>
 
                 {userConnected && <Link onClick={() => navPage('Home')}
-                                        className={`btn ${select === 'Home' ? 'btn-dark' : 'btn-outline-dark'}`} to='/'>Home</Link>}
+                                        className={`btn ${select === 'Home' ? 'btn-dark' : 'btn-outline-dark'}`} to={`${mainLink}/`}>Home</Link>}
 
                 {userConnected && <Link onClick={() => navPage('Profile')}
-                                        className={`btn ${select === 'Profile' ? 'btn-dark' : 'btn-outline-dark'}`} to='/profile'>Profile</Link>}
+                                        className={`btn ${select === 'Profile' ? 'btn-dark' : 'btn-outline-dark'}`} to={`${mainLink}/profile`}>Profile</Link>}
 
                 {userConnected && <Link onClick={() => navPage('Create Post')}
-                                        className={`btn ${select === 'Create Post' ? 'btn-dark' : 'btn-outline-dark'}`} to='/create-post'>Create Post</Link>}
+                                        className={`btn ${select === 'Create Post' ? 'btn-dark' : 'btn-outline-dark'}`} to={`${mainLink}/create-post`}>Create Post</Link>}
 
                 {userConnected && <Link onClick={() => navPage('Messages')}
-                                        className={`btn ${select === 'Messages' ? 'btn-dark' : 'btn-outline-dark'}`} to='/messages'>
+                                        className={`btn ${select === 'Messages' ? 'btn-dark' : 'btn-outline-dark'}`} to={`${mainLink}/messages`}>
                                     <div className={`position-relative`}>
                                         <div>Messages</div>
                                         {newMessages.length > 0 && <div className='newMess'>📨</div>}
@@ -105,10 +106,10 @@ const Tollbar = () => {
                                 </Link>}
 
                 {userConnected && <Link onClick={() => navPage('Favorites')}
-                                        className={`btn ${select === 'Favorites' ? 'btn-dark' : 'btn-outline-dark'}`} to='/favorites'>Favorites</Link>}
+                                        className={`btn ${select === 'Favorites' ? 'btn-dark' : 'btn-outline-dark'}`} to={`${mainLink}/favorites`}>Favorites</Link>}
 
-                {!userConnected && <Link className={`btn btn-outline-dark`} to='/login'>Login</Link>}
-                {!userConnected && <Link className={`btn btn-outline-dark`} to='/register'>Register</Link>}
+                {!userConnected && <Link className={`btn btn-outline-dark`} to={`${mainLink}/login`}>Login</Link>}
+                {!userConnected && <Link className={`btn btn-outline-dark`} to={`${mainLink}/register`}>Register</Link>}
 
             </div>
             {userConnected && <div className='d-flex gap-3 align-items-center ms-2 bgDark'>

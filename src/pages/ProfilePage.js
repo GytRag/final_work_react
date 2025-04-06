@@ -97,7 +97,7 @@ const ProfilePage = () => {
     return (
         <div className='container-fluid mt-2'>
             {userConnected && <div className='gap-1 d-flex justify-content-center inpFocus'>
-                <div className='shadow rounded-2 p-2 d-flex gap-2'>
+                <div className='shadow rounded-2 p-2 d-flex flex-column flex-sm-row gap-2'>
                     <div className='p-2 userImg d-flex flex-column rounded-2'>
                         <div>
                             <img className='w-100 pb-1' src={userConnected.image} alt=""/>

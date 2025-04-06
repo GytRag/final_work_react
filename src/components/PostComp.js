@@ -5,7 +5,7 @@ import {useNavigate} from "react-router-dom";
 
 const PostComp = ({post}) => {
 
-    const {setFavorites, favorites, setSelectPage} = useStore((state) => state);
+    const {setFavorites, favorites, setSelectPage, mainLink} = useStore((state) => state);
     const nav = useNavigate();
     const [inFav, setInFav] = useState(null);
     if (inFav === null) {
@@ -36,7 +36,7 @@ const PostComp = ({post}) => {
 
     function gotTo(item) {
         setSelectPage(null)
-        nav(item)
+        nav(mainLink + item)
     }
 
 

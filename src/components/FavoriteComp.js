@@ -3,7 +3,7 @@ import useStore from "../store/main";
 import {useNavigate} from "react-router-dom";
 
 const FavoriteComp = ({post}) => {
-    const {setFavorites, setSelectPage} = useStore((state) => state);
+    const {setFavorites, setSelectPage, mainLink} = useStore((state) => state);
     const nav = useNavigate();
 
     function RemoveToFavorite() {
@@ -18,7 +18,7 @@ const FavoriteComp = ({post}) => {
 
     function gotTo(item) {
         setSelectPage(null)
-        nav(item)
+        nav(mainLink + item)
     }
 
     return (

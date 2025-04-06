@@ -1,8 +1,10 @@
 import React, {useRef, useState} from 'react';
 import {useNavigate} from "react-router-dom";
 import http from "../plugin/https";
+import useStore from "../store/main";
 
 const RegisterPage = () => {
+    const {mainLink} = useStore((state) => state);
 
     const usernameRef = useRef(null);
     const passOneRef = useRef(null);
@@ -22,7 +24,7 @@ const RegisterPage = () => {
                 if (!data.success) setError(data.message)
                 if (data.success) {
                     setError(null)
-                    nav('/login')
+                    nav(`${mainLink}/login`)
                 }
             })
     }

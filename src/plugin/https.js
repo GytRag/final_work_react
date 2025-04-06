@@ -1,5 +1,6 @@
-const mainUrl = "http://213.136.82.182:8001"
-//make mainUrl + url and remove "mainUrl" in pages fetch
+// const mainUrl = "http://213.136.82.182:8001"
+const mainUrl = "http://localhost:8001/crud"
+
 
 module.exports =  {
     get: (url) => {
