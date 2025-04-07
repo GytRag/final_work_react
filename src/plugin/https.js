@@ -1,5 +1,5 @@
-// const mainUrl = "http://213.136.82.182:8001"
-const mainUrl = "http://localhost:8001/crud"
+const mainUrl = "http://213.136.82.182:3021/crud"
+// const mainUrl = "http://localhost:3021/crud"
 
 
 module.exports =  {
