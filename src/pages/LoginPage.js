@@ -27,7 +27,7 @@ const LoginPage = () => {
                     setFavorites(data.myUser.favorites)
                     localStorage.setItem('token', data.token)
                     socket.emit('login', data.myUser);
-                    nav(mainLink)
+                    nav(mainLink + '/')
                 }
             })
     }
