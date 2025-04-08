@@ -5,10 +5,10 @@ import {useNavigate} from "react-router-dom";
 
 const PostComp = ({post}) => {
 
-    const {setFavorites, favorites, setSelectPage, mainLink} = useStore((state) => state);
+    const {setFavorites, favorites, setSelectPage, mainLink, userConnected} = useStore((state) => state);
     const nav = useNavigate();
     const [inFav, setInFav] = useState(null);
-    if (inFav === null) {
+    if (inFav === null && userConnected) {
         const exist = favorites.find(fin => fin._id === post._id)
         if (exist) setInFav(true)
     }
@@ -35,8 +35,10 @@ const PostComp = ({post}) => {
     }
 
     function gotTo(item) {
-        setSelectPage(null)
-        nav(mainLink + item)
+        if(userConnected) {
+            setSelectPage(null)
+            nav(mainLink + item)
+        }
     }
 
 
@@ -48,8 +50,8 @@ const PostComp = ({post}) => {
                     <h2 onClick={() => gotTo(`/post/${post._id}`)} className='fs-1 me-1 cursor-point'>{post.title}</h2>
                     <p onClick={() => gotTo(`/user/${post.name}`)} className='cursor-point my-1'>Created
                         by: <b>{post.name}</b></p>
-                    {!inFav && <button onClick={addToFavorite} className="mt-2 btn btn-outline-dark">Add to favorite</button>}
-                    {inFav && <button onClick={RemoveToFavorite} className="mt-2 btn btn-dark">Remove from favorites</button>}
+                    {!inFav && userConnected && <button onClick={addToFavorite} className="mt-2 btn btn-outline-dark">Add to favorite</button>}
+                    {inFav && userConnected && <button onClick={RemoveToFavorite} className="mt-2 btn btn-dark">Remove from favorites</button>}
                 </div>
             </div>
         </div>

@@ -26,7 +26,7 @@ const Tollbar = () => {
     const [change, setChange] = useState(false);
 
     function logout() {
-        navigate(mainLink + '/login')
+        navigate(mainLink + '/')
         setUserConnected(null);
         setFavorites(null)
         setUserData(null)
@@ -87,7 +87,7 @@ const Tollbar = () => {
             className='tollBarr rounded-2 m-2 mb-4 p-2 d-flex tollBar justify-content-between align-items-start shadow'>
             <div className='d-flex gap-1 flex-wrap bgDark'>
 
-                {userConnected && <Link onClick={() => navPage('Home')}
+                {<Link onClick={() => navPage('Home')}
                                         className={`btn ${select === 'Home' ? 'btn-dark' : 'btn-outline-dark'}`} to={`${mainLink}/`}>Home</Link>}
 
                 {userConnected && <Link onClick={() => navPage('Profile')}
@@ -108,8 +108,10 @@ const Tollbar = () => {
                 {userConnected && <Link onClick={() => navPage('Favorites')}
                                         className={`btn ${select === 'Favorites' ? 'btn-dark' : 'btn-outline-dark'}`} to={`${mainLink}/favorites`}>Favorites</Link>}
 
-                {!userConnected && <Link className={`btn btn-outline-dark`} to={`${mainLink}/login`}>Login</Link>}
-                {!userConnected && <Link className={`btn btn-outline-dark`} to={`${mainLink}/register`}>Register</Link>}
+                {!userConnected && <Link onClick={() => navPage('Login')}
+                                         className={`btn ${select === 'Login' ? 'btn-dark' : 'btn-outline-dark'}`} to={`${mainLink}/login`}>Login</Link>}
+                {!userConnected && <Link onClick={() => navPage('Register')}
+                                         className={`btn ${select === 'Register' ? 'btn-dark' : 'btn-outline-dark'}`} to={`${mainLink}/register`}>Register</Link>}
 
             </div>
             {userConnected && <div className='d-flex gap-3 align-items-center ms-2 bgDark'>
