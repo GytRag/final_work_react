@@ -6,4 +6,5 @@ import  {io} from 'socket.io-client'
 export const socket = io('http://thecode.lt', {
     path: '/socket.io',
     transports: ['websocket'],
+    secure: true
 });

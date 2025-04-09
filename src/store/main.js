@@ -28,7 +28,7 @@ const useStore = create((set) => ({
     select:"Home",
     setSelectPage: (x) => set({select: x}),
 
-    mainLink: ""
+    mainLink: "/crud"
 
 }))
 
