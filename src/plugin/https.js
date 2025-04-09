@@ -1,4 +1,3 @@
-// const mainUrl = "http://213.136.82.182:3021"
 // const mainUrl = "http://localhost:3021/crud"
 const useStore = require("../store/main");
 const mainUrl = "/api"
