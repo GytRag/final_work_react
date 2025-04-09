@@ -1,8 +1,5 @@
-// const mainUrl = "http://localhost:3021/crud"
-const useStore = require("../store/main");
-const mainUrl = "/api/crud"
-
-
+const mainUrl = "http://localhost:3022/crud"
+// const mainUrl = "/api/crud"
 
 module.exports =  {
     get: (url) => {
