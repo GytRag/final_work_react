@@ -1,13 +1,14 @@
-// const mainUrl = "http://213.136.82.182:3021"
-// const mainUrl = "http://localhost:3021"
+// const mainUrl = "http://localhost:3021/crud"
+const useStore = require("../store/main");
 const mainUrl = "/api"
+
+const {mainLink} = useStore((state) => state);
 
 
 module.exports =  {
     get: (url) => {
         return new Promise(resolve => {
-            // fetch(mainUrl + url)
-            fetch(mainUrl + url)
+            fetch(mainUrl + mainLink + url)
                 .then(res => res.json())
                 .then(data => {
                     resolve(data)
@@ -25,8 +26,7 @@ module.exports =  {
                 },
                 body: JSON.stringify(data)
             }
-            // fetch(mainUrl + url)
-            fetch(mainUrl + url, options)
+            fetch(mainUrl + mainLink + url, options)
                 .then(res => res.json())
                 .then(data => {
                     resolve(data)
@@ -43,8 +43,7 @@ module.exports =  {
                     authorization: localStorage.getItem('token'),
                 }
             }
-            // fetch(mainUrl + url)
-            fetch(mainUrl + url, options)
+            fetch(mainUrl + mainLink + url, options)
                 .then(res => res.json())
                 .then(data => {
                     resolve(data)
@@ -63,8 +62,7 @@ module.exports =  {
                 },
                 body: JSON.stringify(data)
             }
-            // fetch(mainUrl + url)
-            fetch(mainUrl + url, options)
+            fetch(mainUrl + mainLink + url, options)
                 .then(res => res.json())
                 .then(data => {
                     resolve(data)
