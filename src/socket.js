@@ -6,3 +6,4 @@ export const socket = io('https://thecode.lt', {
     transports: ['websocket'],
     secure: true
 });
+
