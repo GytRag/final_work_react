@@ -21,7 +21,6 @@ function App() {
 
     return (
         <div className='App'>
-            {/*{showToolbar && <Tollbar />}*/}
             <Tollbar />
             <div>
 

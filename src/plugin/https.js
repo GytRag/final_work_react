@@ -1,5 +1,5 @@
-const mainUrl = "http://localhost:3022/crud"
-// const mainUrl = "/api/crud"
+const mainUrl = "http://localhost:3021"
+// const mainUrl = "/api"
 
 module.exports =  {
     get: (url) => {
