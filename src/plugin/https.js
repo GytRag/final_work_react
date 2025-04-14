@@ -1,6 +1,6 @@
-const mainUrl = "http://localhost:3021"
+// const mainUrl = "http://localhost:3021"
 // const mainUrl = "/api"
-
+const mainUrl = "http://213.136.82.182:4021"
 module.exports =  {
     get: (url) => {
         return new Promise(resolve => {
@@ -9,6 +9,9 @@ module.exports =  {
                 .then(data => {
                     resolve(data)
                 })
+                .catch(err => {
+                    console.error("FETCH ERROR:", err);
+                });
 
         })
     },
@@ -27,6 +30,9 @@ module.exports =  {
                 .then(data => {
                     resolve(data)
                 })
+                .catch(err => {
+                    console.error("FETCH ERROR:", err);
+                });
 
         })
     },
@@ -44,6 +50,9 @@ module.exports =  {
                 .then(data => {
                     resolve(data)
                 })
+                .catch(err => {
+                    console.error("FETCH ERROR:", err);
+                });
 
         })
     },
@@ -63,6 +72,9 @@ module.exports =  {
                 .then(data => {
                     resolve(data)
                 })
+                .catch(err => {
+                    console.error("FETCH ERROR:", err);
+                });
 
         })
     }
